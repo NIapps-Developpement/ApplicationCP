@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -18,14 +21,22 @@ import java.util.Map;
 
 public class Events extends AppCompatActivity {
     TextView mTextMessage;
+    ImageView image;
     private static final String TAG = "Events";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trash_layout);
         mTextMessage = (TextView) findViewById(R.id.test);
+        image = (ImageView)findViewById(R.id.imageView);
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
+        StorageReference islandRef = storageRef.child("PhotosEvents/6h-cuistax.png");
+        Glide.with(this /* context */)
+                .using(new FirebaseImageLoader())
+                .load(islandRef)
+                .into(image0);
+
 
     }
     public void SetEvents(){
