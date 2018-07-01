@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
         android:id="@+id/imageView"
@@ -9,4 +11,12 @@
         android:layout_height="100dp"
         android:layout_centerInParent="true"
         app:srcCompat="@drawable/cp_trans"/>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:background="#eb181818"
+        app:menu="@menu/navigation"
+        tools:layout_editor_absoluteY="455dp"
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
