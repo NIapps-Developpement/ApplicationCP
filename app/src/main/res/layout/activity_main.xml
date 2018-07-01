@@ -28,6 +28,6 @@
         app:menu="@menu/navigation"
         tools:layout_editor_absoluteY="455dp"
         android:layout_alignParentBottom="true"
-        app:itemIconTint="@android:color/white"/>
+        app:itemIconTint="none"/>
 
 </RelativeLayout>
