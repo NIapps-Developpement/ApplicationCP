@@ -35,7 +35,7 @@ public class Events extends AppCompatActivity {
         Glide.with(this /* context */)
                 .using(new FirebaseImageLoader())
                 .load(islandRef)
-                .into(image0);
+                .into(image);
 
 
     }
