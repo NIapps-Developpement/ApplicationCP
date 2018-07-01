@@ -27,7 +27,6 @@
         android:background="#eb181818"
         app:menu="@menu/navigation"
         tools:layout_editor_absoluteY="455dp"
-        android:layout_alignParentBottom="true"
-        app:itemIconTint="@android:color/white"/>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
