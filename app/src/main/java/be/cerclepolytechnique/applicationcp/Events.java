@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Events extends AppCompatActivity {
+
     TextView mTextMessage;
     ImageView image;
     private static final String TAG = "Events";
@@ -29,11 +30,10 @@ public class Events extends AppCompatActivity {
         setContentView(R.layout.trash_layout);
         image = (ImageView)findViewById(R.id.imageView);
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        StorageReference islandRef = storageRef.child("PhotosEvents/6h-cuistax.png");
-        Glide.with(this /* context */)
+        StorageReference gsReference = storage.getReferenceFromUrl("gs://application-cp.appspot.com/PhotosEvents/6h-cuistax.png");
+        Glide.with(this)
                 .using(new FirebaseImageLoader())
-                .load(islandRef)
+                .load(gsReference)
                 .into(image);
 
 
