@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="be.cerclepolytechnique.applicationcp.MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="81dp"
+    android:background="@drawable/fond_square">
 
     <TextView
         android:id="@+id/message"
@@ -15,7 +16,7 @@
         android:text="@string/title_home"
         tools:layout_editor_absoluteX="33dp"
         tools:layout_editor_absoluteY="294dp"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:textAlignment="center"
         android:textSize="40dp"/>
 
@@ -23,8 +24,9 @@
         android:id="@+id/navigation"
         android:layout_width="384dp"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
+        android:background="@android:color/transparent"
         app:menu="@menu/navigation"
-        tools:layout_editor_absoluteY="455dp" />
+        tools:layout_editor_absoluteY="455dp"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
