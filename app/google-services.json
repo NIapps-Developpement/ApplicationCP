@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "93750736124",
+    "firebase_url": "https://application-cp.firebaseio.com",
+    "project_id": "application-cp",
+    "storage_bucket": "application-cp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93750736124:android:1823ec2140f167fe",
+        "android_client_info": {
+          "package_name": "be.cerclepolytechnique.applicationcp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93750736124-afoucs64l132c0ao11crjhikjdlucanv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEE7umOtPRcL-bs80UGV71ekkgRBcCUD0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
