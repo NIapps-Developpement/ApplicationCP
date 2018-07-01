@@ -56,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+
+
+    }
+    public void Set(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         Map<String, Object> Post = new HashMap<>();
         Post.put("Name", "Ilan Rossler");
         Post.put("News", "QUEDESKEHS");
@@ -76,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+    }
+    public void Get(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("News")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -94,5 +103,4 @@ public class MainActivity extends AppCompatActivity {
                 });
 
     }
-
 }
