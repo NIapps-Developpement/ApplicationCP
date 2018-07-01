@@ -83,14 +83,16 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                System.out.print(document.getData());
+                                Log.d(TAG, document.getId() + " => " + document.getData() + "\n\n\n");
+                                mTextMessage.setText(document.getData().toString());
                             }
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
+
                     }
                 });
+
     }
 
 }
