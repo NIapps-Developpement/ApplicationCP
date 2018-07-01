@@ -54,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        GetNews();
 
 
 
     }
-    public void Set(){
+    public void SetNews(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String, Object> Post = new HashMap<>();
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    public void Get(){
+    public void GetNews(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("News")
                 .get()
