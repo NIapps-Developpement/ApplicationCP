@@ -27,7 +27,6 @@ public class Events extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trash_layout);
-        mTextMessage = (TextView) findViewById(R.id.test);
         image = (ImageView)findViewById(R.id.imageView);
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
