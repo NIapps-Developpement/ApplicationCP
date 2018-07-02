@@ -19,10 +19,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-
+    Map<String,Object> k;
     private static final String TAG = "MainActivity";
 
 
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         //RGEIRPGHEGBE
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-       // GetNews();
         navigation.setItemIconTintList(null);
         android.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
@@ -97,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData() + "\n\n\n");
+                                k = document.getData();
+                                Log.d(TAG, document.getId() + " => " + k.get("News")+ "\n\n\n");
 
                             }
                         } else {
