@@ -47,6 +47,8 @@
         android:layout_height="wrap_content"
         android:background="#eb181818"
         app:menu="@menu/navigation"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@color/nav_icon"
+        />
 
 </RelativeLayout>
