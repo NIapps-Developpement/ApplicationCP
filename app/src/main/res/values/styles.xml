@@ -6,7 +6,5 @@
         <item name="colorPrimary">#FFFF</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:selectableItemBackground">@drawable/selected_round</item>
-        <item name="android:actionBarItemBackground">@drawable/selected_round</item>
     </style>
 </resources>
