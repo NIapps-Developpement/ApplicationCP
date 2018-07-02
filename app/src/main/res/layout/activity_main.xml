@@ -49,6 +49,8 @@
         app:menu="@menu/navigation"
         android:layout_alignParentBottom="true"
         app:itemIconTint="@color/nav_icon"
+        app:itemBackground="@drawable/selector_menu"
+
         />
 
 </RelativeLayout>
