@@ -25,6 +25,7 @@
         android:textAlignment="center"
         android:layout_marginHorizontal="20dp"
         android:textCursorDrawable="@null"
+        android:inputType="numberPassword"
       />
     <Button
         android:id="@+id/confirm_login"
