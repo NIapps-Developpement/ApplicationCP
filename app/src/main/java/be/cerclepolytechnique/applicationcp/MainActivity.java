@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         //RGEIRPGHEGBE
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setItemIconTintList(null);
         android.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame
