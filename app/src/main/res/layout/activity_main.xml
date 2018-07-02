@@ -30,7 +30,6 @@
         android:layout_height="wrap_content"
         android:background="#eb181818"
         app:menu="@menu/navigation"
-        tools:layout_editor_absoluteY="455dp"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
