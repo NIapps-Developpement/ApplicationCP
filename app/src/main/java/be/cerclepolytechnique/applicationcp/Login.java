@@ -24,8 +24,6 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
     Map<String, Object> k;
     EditText login;
-    Button confirm;
-    Button retour;
     final List<String> CodeList = new ArrayList<>();
 
 
