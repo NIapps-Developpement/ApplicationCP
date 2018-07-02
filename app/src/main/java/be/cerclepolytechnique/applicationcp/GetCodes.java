@@ -2,9 +2,10 @@ package be.cerclepolytechnique.applicationcp;
 
 import android.os.AsyncTask;
 
-public class GetCodes extends AsyncTask<> {
+public class GetCodes extends AsyncTask<Void,Void,Void> {
+
     @Override
-    protected Object doInBackground(Object[] objects) {
+    protected Void doInBackground(Void... voids) {
         return null;
     }
 }
