@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/fond_square"
+    android:background="@drawable/square_sombre"
     >
-<ImageView
-    android:id="@+id/logo"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:src="@drawable/cp_trans"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="40dp"/>
+
     <EditText
-        android:id="@+id/login"
+        android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_bg_dark"
@@ -24,33 +18,33 @@
         android:textAlignment="center"
         android:layout_marginHorizontal="20dp"
         android:textCursorDrawable="@null"
-      />
+        />
     <Button
-        android:id="@+id/confirm_login"
+        android:id="@+id/send_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_bg_gris"
+        android:background="@drawable/edit_bg_gristrans2"
         android:paddingVertical="5dp"
-        android:layout_below="@id/login"
+        android:layout_below="@id/message"
         android:textSize="20dp"
-        android:text="S'identifier"
+        android:text="Envoyer"
         android:textAllCaps="false"
         android:textColor="#E3E3E3"
         android:layout_marginTop="40dp"
         android:textAlignment="center"
         android:layout_marginHorizontal="20dp"/>
     <Button
-        android:id="@+id/retour"
+        android:id="@+id/retour_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_bg_blanc"
+        android:background="@drawable/edit_bg_gristrans1"
         android:paddingVertical="5dp"
-        android:layout_below="@id/confirm_login"
+        android:layout_below="@id/send_message"
         android:textSize="20dp"
         android:text="Retour"
         android:textAllCaps="false"
         android:textColor="#D9000000"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:textAlignment="center"
         android:layout_marginHorizontal="20dp"/>
 </RelativeLayout>
