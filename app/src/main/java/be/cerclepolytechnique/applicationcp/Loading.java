@@ -2,33 +2,20 @@ package be.cerclepolytechnique.applicationcp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-public class Loading extends AppCompatActivity{
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
+public class Loading extends AppCompatActivity {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accueil_layout);
-
-        Thread welcomeThread = new Thread() {
-
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                try {
-                    super.run();
-                    sleep(1000);  //Delay of 10 seconds
-                } catch (Exception e) {
-
-                } finally {
-
-                    Intent i = new Intent(Loading.this,
-                            MainActivity.class);
-                    startActivity(i);
-                    finish();
-                }
+                final Intent mainIntent = new Intent(Loading.this, MainActivity.class);
+                Loading.this.startActivity(mainIntent);
+                Loading.this.finish();
             }
-        };
-        welcomeThread.start();
+        }, 1000);
     }
-}
+    }
