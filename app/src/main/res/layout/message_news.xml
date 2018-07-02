@@ -6,18 +6,20 @@
 
     <EditText
         android:id="@+id/message"
+        android:textAlignment="viewStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_bg_dark"
+        android:background="@drawable/edit_bg_blancsolid"
         android:paddingVertical="8dp"
         android:layout_below="@id/logo"
         android:textSize="22dp"
-        android:hint="Mot de passe"
-        android:textColorHint="#CCC1C1C1"
+        android:hint="Tapez ici ....."
+        android:textColorHint="#E69A9A9A"
         android:layout_marginTop="35dp"
-        android:textAlignment="center"
-        android:layout_marginHorizontal="20dp"
+        android:padding="25dp"
+        android:layout_marginHorizontal="40dp"
         android:textCursorDrawable="@null"
+        android:height="150dp"
         />
     <Button
         android:id="@+id/send_message"
@@ -30,9 +32,9 @@
         android:text="Envoyer"
         android:textAllCaps="false"
         android:textColor="#E3E3E3"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="150dp"
         android:textAlignment="center"
-        android:layout_marginHorizontal="20dp"/>
+        android:layout_marginHorizontal="40dp"/>
     <Button
         android:id="@+id/retour_message"
         android:layout_width="match_parent"
@@ -46,5 +48,5 @@
         android:textColor="#D9000000"
         android:layout_marginTop="50dp"
         android:textAlignment="center"
-        android:layout_marginHorizontal="20dp"/>
+        android:layout_marginHorizontal="40dp"/>
 </RelativeLayout>
