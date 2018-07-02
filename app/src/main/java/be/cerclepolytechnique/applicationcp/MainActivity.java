@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //RGEIRPGHEGBE
+        SetNews();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setItemIconTintList(null);
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         Map<String, Object> Post = new HashMap<>();
         Post.put("Name", "Ilan Rossler");
-        Post.put("Post", "QUEDESKEHS");
+        Post.put("Post", "QUEDESKEHS2");
         Post.put("Date", "01/07");
         Post.put("PhotoNbr", "1");
 
