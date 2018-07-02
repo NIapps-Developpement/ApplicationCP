@@ -1,6 +1,8 @@
 package be.cerclepolytechnique.applicationcp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -20,13 +22,15 @@ import java.util.List;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
-    Map<String,Object> k;
+    Map<String, Object> k;
     EditText login;
     Button confirm;
     Button retour;
-    
-    
+    final List<String> CodeList = new ArrayList<>();
+
+
     private static final String TAG = "Login";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +41,10 @@ public class Login extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               List Codes = GetCodes();
-
+              /*  AsyncCaller asy = new AsyncCaller();
+                asy.execute();
+                */
+              GetCode();
             }
         });
         retour.setOnClickListener(new View.OnClickListener() {
@@ -48,21 +54,7 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
-    private void CheckCode(List Codes) {
-        EditText login = findViewById(R.id.login);
-        String UserCode = login.getText().toString();
-        if(Codes.contains(UserCode)){
-            final Intent mainIntent = new Intent(Login.this, NewsPost.class);
-            Login.this.startActivity(mainIntent);
-        }
-        else{
-            Log.d(TAG, "WAAAAAAAAH");
-        }
-    }
-
-    public List GetCodes(){
-        final List<String> CodeList = new ArrayList<>();
+    private void GetCode(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Codes")
                 .get()
@@ -79,11 +71,21 @@ public class Login extends AppCompatActivity {
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
-
+                        CheckCode();
                     }
                 });
-        
-        return CodeList;
-
     }
+    private void CheckCode() {
+        EditText login = findViewById(R.id.login);
+        String UserCode = login.getText().toString();
+        if (CodeList.contains(UserCode)) {
+            final Intent mainIntent = new Intent(Login.this, NewsPost.class);
+            Login.this.startActivity(mainIntent);
+        } else {
+            Log.d(TAG, "WAAAAAAAAH");
+        }
+    }
+
 }
+
+
