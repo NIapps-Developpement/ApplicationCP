@@ -8,18 +8,22 @@
     tools:context="be.cerclepolytechnique.applicationcp.MainActivity"
     tools:layout_editor_absoluteY="81dp"
     android:background="@drawable/fond_square">
-    <include
-        layout="@layout/content_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/navigation"/>
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+    <TextView
+        android:id="@+id/titre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eb181818"
-        app:menu="@menu/navigation"
-        tools:layout_editor_absoluteY="455dp"
-        android:layout_alignParentBottom="true" />
+        android:background="#585858"
+        android:text="Cercle Polytechnique"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textColor="#FFFF"
+        android:paddingVertical="10dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titre">
 
+    <include layout="@layout/content_scrolling"
+        />
+    </RelativeLayout>
 </RelativeLayout>
