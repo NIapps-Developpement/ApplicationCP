@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/fond_square">
+    <RelativeLayout
+        android:id="@+id/ilan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_bg"
+        android:layout_margin="15dp"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ilan Rossler"
+            android:textSize="17dp"
+            android:textColor="#FFFFFF"
+            android:layout_toRightOf="@+id/photo"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"/>
+        <TextView
+            android:id="@+id/role"
+            android:layout_alignLeft="@id/nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Délégué Info-Web"
+            android:layout_below="@+id/nom"
+        android:textSize="17dp"
+        android:textColor="#FFFFFF"
+        android:layout_toRightOf="@+id/photo"/>
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/photo_bg"
+            android:layout_margin="10dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/max"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_bg"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:layout_below="@id/ilan">
+        <TextView
+            android:id="@+id/nom2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maxime Jongen"
+            android:textSize="17dp"
+            android:textColor="#FFFFFF"
+            android:layout_toRightOf="@+id/photo2"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"/>
+        <TextView
+            android:id="@+id/role2"
+            android:layout_alignLeft="@id/nom2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Délégué Info-Web"
+            android:layout_below="@+id/nom2"
+            android:textSize="17dp"
+            android:textColor="#FFFFFF"
+            android:layout_toRightOf="@+id/photo2"/>
+        <ImageView
+            android:id="@+id/photo2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/photo_bg"
+            android:layout_margin="10dp" />
+    </RelativeLayout>
+</RelativeLayout>
