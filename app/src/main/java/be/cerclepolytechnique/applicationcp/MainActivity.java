@@ -59,12 +59,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final Intent mainIntent = new Intent(MainActivity.this, Login.class);
-               MainActivity.this.startActivity(mainIntent);
+                MainActivity.this.startActivity(mainIntent);
             }
         });
         //RGEIRPGHEGBE
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.getMenu().getItem(1).setChecked(true);
+
         android.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame

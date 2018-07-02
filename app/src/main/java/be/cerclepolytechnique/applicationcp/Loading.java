@@ -18,4 +18,4 @@ public class Loading extends AppCompatActivity {
             }
         }, 1000);
     }
-    }
+}

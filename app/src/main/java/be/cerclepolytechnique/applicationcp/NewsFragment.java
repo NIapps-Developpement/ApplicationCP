@@ -37,7 +37,7 @@ public class NewsFragment extends Fragment {
         // you already have yours).
 
         return myView;
-}
+    }
     public void GetNews(){
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
