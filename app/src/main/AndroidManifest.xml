@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".Events"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".Login"/>
     </application>
 
 </manifest>
