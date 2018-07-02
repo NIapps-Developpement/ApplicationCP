@@ -6,39 +6,50 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NewsPost extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_news);
+        final String name = Login.getName();
+        final EditText message = findViewById(R.id.message);
         Button send = findViewById(R.id.send_message);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SetNews();
+                Date c = Calendar.getInstance().getTime();
+                System.out.println("Current time => " + c);
+
+                SimpleDateFormat df = new SimpleDateFormat("dd/MMM");
+                String date = df.format(c);
+                String post = String.valueOf(message.getText());
+                SetNews(name, post, date, "1");
             }
         });
 
     }
-    public void SetNews(){
+    public void SetNews(String name, String post, String date, String photonbr){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String, Object> Post = new HashMap<>();
-        Post.put("Name", "Ilan Rossler");
-        Post.put("Post", "QUEDESKEHS2");
-        Post.put("Date", "01/07");
-        Post.put("PhotoNbr", "1");
+        Post.put("Name", name);
+        Post.put("Post", post);
+        Post.put("Date", date);
+        Post.put("PhotoNbr", photonbr);
 
 // Add a new document with a generated ID
         db.collection("News")

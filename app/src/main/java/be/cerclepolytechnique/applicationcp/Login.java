@@ -22,9 +22,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
+    public static String name;
     Map<String, Object> k;
     EditText login;
     final List<String> CodeList = new ArrayList<>();
+    final List<String> NameList = new ArrayList<>();
 
 
     private static final String TAG = "Login";
@@ -64,6 +66,8 @@ public class Login extends AppCompatActivity {
                                 k = document.getData();
                                 Log.d(TAG, document.getId() + " => " + k + "\n\n\n");
                                 CodeList.add((String) k.get("Code"));
+                                NameList.add((String) k.get("Nom"));
+
                                 Log.d(TAG, String.valueOf(CodeList));
                             }
                         } else {
@@ -74,14 +78,25 @@ public class Login extends AppCompatActivity {
                 });
     }
     private void CheckCode() {
+        int i = 0;
         EditText login = findViewById(R.id.login);
         String UserCode = login.getText().toString();
-        if (CodeList.contains(UserCode)) {
+        for (String E : CodeList){
+            i += 1;
+            if(UserCode.equals(E)){
+            setName(NameList.get(i-1));
+            Log.d(TAG, name);
             final Intent mainIntent = new Intent(Login.this, NewsPost.class);
             Login.this.startActivity(mainIntent);
-        } else {
-            Log.d(TAG, "WAAAAAAAAH");
         }
+        }
+
+    }
+    public static String getName(){
+        return name;
+    }
+    public void setName(String nom){
+           name = nom;
     }
 
 }
