@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="be.cerclepolytechnique.applicationcp.MainActivity"
-    tools:layout_editor_absoluteY="81dp"
-    android:background="@drawable/fond_square">
+    tools:layout_editor_absoluteY="81dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
