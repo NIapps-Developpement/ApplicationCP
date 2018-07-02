@@ -8,22 +8,38 @@
     tools:context="be.cerclepolytechnique.applicationcp.MainActivity"
     tools:layout_editor_absoluteY="81dp"
     android:background="@drawable/fond_square">
-    <TextView
-        android:id="@+id/titre"
+    <RelativeLayout
+        android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#585858"
-        android:text="Cercle Polytechnique"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:textColor="#FFFF"
-        android:paddingVertical="10dp"/>
+        >
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_action_send"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFF"
+            android:background="00FFFFFF"
+            android:text="Cercle Polytechnique"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:paddingVertical="10dp"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
     <include
         layout="@layout/content_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
        android:layout_alignParentBottom="true"
-        android:layout_below="@id/titre"/>
+        android:layout_below="@id/banner"/>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
