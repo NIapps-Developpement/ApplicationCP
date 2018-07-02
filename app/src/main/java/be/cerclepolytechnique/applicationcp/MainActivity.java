@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //RGEIRPGHEGBE
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -69,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
         Map<String, Object> Post = new HashMap<>();
         Post.put("Name", "Ilan Rossler");
-        Post.put("News", "QUEDESKEHS");
+        Post.put("Post", "QUEDESKEHS");
         Post.put("Date", "01/07");
+        Post.put("PhotoNbr", "1");
 
 // Add a new document with a generated ID
         db.collection("News")
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 k = document.getData();
-                                Log.d(TAG, document.getId() + " => " + k.get("News")+ "\n\n\n");
+                                Log.d(TAG, document.getId() + " => " + k.get("Post")+ "\n\n\n");
 
                             }
                         } else {
