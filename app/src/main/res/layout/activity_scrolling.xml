@@ -8,16 +8,7 @@
     tools:context="be.cerclepolytechnique.applicationcp.MainActivity"
     tools:layout_editor_absoluteY="81dp"
     android:background="@drawable/fond_square">
-    <TextView
-        android:id="@+id/titre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#585858"
-        android:text="Cercle Polytechnique"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:textColor="#FFFF"
-        android:paddingVertical="10dp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
