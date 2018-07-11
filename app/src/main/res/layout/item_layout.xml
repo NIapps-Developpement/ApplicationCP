@@ -18,7 +18,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:paddingHorizontal="15dp"
-        android:paddingBottom="50dp"/>
+        android:paddingBottom="50dp"
+        android:fontFamily="@font/questrial"/>
 
     <TextView
         android:id="@+id/itemNom"
@@ -30,7 +31,8 @@
         android:layout_alignBottom="@id/itemPhoto"
         android:gravity="center"
         android:textColor="#FFFFFF"
-        android:textSize="15dp"/>
+        android:textSize="15dp"
+        android:fontFamily="@font/questrial"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +44,8 @@
         android:layout_alignBottom="@id/itemPhoto"
         android:layout_below="@id/itemPost"
         android:gravity="center"
-        android:paddingHorizontal="10dp"/>
+        android:paddingHorizontal="10dp"
+        android:fontFamily="@font/questrial"/>
 
     <ImageView
         android:id="@+id/itemPhoto"

@@ -1,6 +1,7 @@
 package be.cerclepolytechnique.applicationcp;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     button.setBackground(getResources().getDrawable(R.drawable.ic_note_add));
                     return true;
                 case R.id.navigation_notifications:
+                    button.setBackgroundResource(0);
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
                                     , new ComiteFragment())
