@@ -26,24 +26,33 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     Map<String,Object> k;
-    ImageButton button;
-    private static final String TAG = "MainActivity";
 
+
+    private static final String TAG = "MainActivity";
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            android.app.FragmentManager fragmentManager = getFragmentManager();
+            ImageButton button = findViewById(R.id.send_button);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-
+                    button.setBackground(getResources().getDrawable(R.drawable.ic_action_send));
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame
+                                    , new NewsFragment())
+                            .commit();
                     return true;
                 case R.id.navigation_dashboard:
-
+                    button.setBackground(getResources().getDrawable(R.drawable.ic_note_add));
                     return true;
                 case R.id.navigation_notifications:
-
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame
+                                    , new ComiteFragment())
+                            .commit();
                     return true;
             }
             return false;

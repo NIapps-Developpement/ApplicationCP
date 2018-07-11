@@ -1,5 +1,6 @@
 package be.cerclepolytechnique.applicationcp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,14 @@ public class NewsPost extends AppCompatActivity {
         final String name = Login.getName();
         final EditText message = findViewById(R.id.message);
         Button send = findViewById(R.id.send_message);
+        Button retour = findViewById(R.id.retour_message);
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent mainIntent = new Intent(NewsPost.this, MainActivity.class);
+                NewsPost.this.startActivity(mainIntent);
+            }
+        });
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
