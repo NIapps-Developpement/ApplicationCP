@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             ImageButton button = findViewById(R.id.send_button);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    button.setBackground(getResources().getDrawable(R.drawable.ic_action_send));
+                    button.setBackground(getResources().getDrawable(R.drawable.ic_send));
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
                                     , new NewsFragment())
@@ -48,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_dashboard:
                     button.setBackground(getResources().getDrawable(R.drawable.ic_note_add));
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame
+                                    , new CalendarFragment())
+                            .commit();
                     return true;
                 case R.id.navigation_notifications:
                     button.setBackgroundResource(0);

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_bg"
+    android:background="@drawable/bg_item_nf"
     android:paddingVertical="10dp">
 
 
@@ -14,12 +14,11 @@
         android:id="@+id/itemPost"
         android:textSize="20dp"
         android:layout_margin="3dp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:paddingHorizontal="15dp"
-        android:paddingBottom="50dp"
-        android:fontFamily="@font/questrial"/>
+        android:paddingBottom="50dp" />
 
     <TextView
         android:id="@+id/itemNom"
@@ -30,28 +29,26 @@
         android:text="Nom"
         android:layout_alignBottom="@id/itemPhoto"
         android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textSize="15dp"
-        android:fontFamily="@font/questrial"/>
+        android:textColor="@color/white"
+        android:textSize="15dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/itemDate"
         android:textSize="15dp"
         android:text="Date"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:layout_alignParentRight="true"
         android:layout_alignBottom="@id/itemPhoto"
         android:layout_below="@id/itemPost"
         android:gravity="center"
-        android:paddingHorizontal="10dp"
-        android:fontFamily="@font/questrial"/>
+        android:paddingHorizontal="10dp" />
 
     <ImageView
         android:id="@+id/itemPhoto"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_below="@+id/itemPost"
-        android:background="@drawable/photo_bg"
+        android:background="@drawable/bg_white_round"
         android:layout_marginHorizontal="15dp" />
 </RelativeLayout>

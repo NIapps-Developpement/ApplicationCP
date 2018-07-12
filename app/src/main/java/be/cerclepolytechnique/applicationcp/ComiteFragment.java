@@ -1,6 +1,7 @@
 package be.cerclepolytechnique.applicationcp;
 
 import android.app.Fragment;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.ami.fundapter.BindDictionary;
@@ -26,10 +28,16 @@ import java.util.Map;
     public class ComiteFragment extends Fragment {
 
         View myView;
+        ImageView ilan;
+        ImageView maxime;
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             myView = inflater.inflate(R.layout.info_layout, container, false);
+            ilan = (ImageView) myView.findViewById(R.id.photo);
+            ilan.setClipToOutline(true);
+            maxime = (ImageView) myView.findViewById(R.id.photo2);
+            maxime.setClipToOutline(true);
             return myView;
         }
     }

@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF4081</color>
-    <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#FFFF</color>
-    <color name ="white">#FFFFFF</color>
-    <color name ="grey1"></color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+
+    <color name="fade_black">#D9000000</color>
+    <color name="fade_white">#D9FFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="grey_solid_lighter">#E3E3E3</color>
+    <color name="gey_solid_light">#9B9B9B</color>
+    <color name="gey_solid_medium">#6C6C6C</color>
+    <color name="gey_solid_dark">#585858</color>
+
+
+    <color name="grey_fade_medium">#CCC1C1C1</color>
+    <color name="grey_fader_medium">#D9ACACAC</color>
+    <color name="grey_fadest_medium">#BFD2D6D1</color>
+    <color name="gey_fade_dark">#eb181818</color>
+    <color name="grey_fader_dark">#80181818</color>
+
+    <color name="grey_fade_accent">#E69A9A9A</color>
 
 </resources>

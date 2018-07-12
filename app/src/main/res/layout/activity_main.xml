@@ -12,13 +12,13 @@
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#585858"
+        android:background="@color/gey_solid_dark"
         >
         <ImageButton
             android:id="@+id/send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_action_send"
+            android:background="@drawable/ic_send"
             android:layout_toRightOf="@id/titre"
             android:layout_marginLeft="10dp"
             android:layout_centerVertical="true" />
@@ -26,13 +26,12 @@
             android:id="@+id/titre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFF"
+            android:textColor="@color/white"
             android:text="Cercle Polytechnique"
             android:textAlignment="center"
             android:textSize="25dp"
             android:paddingVertical="10dp"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/questrial"/>
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 
     <include
@@ -45,12 +44,11 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#eb181818"
+        android:background="@color/gey_fade_dark"
         app:menu="@menu/navigation"
         android:layout_alignParentBottom="true"
         app:itemIconTint="@color/nav_icon"
         app:itemBackground="@drawable/selector_menu"
-
-        />
+        android:layout_marginBottom="-16dp" />
 
 </RelativeLayout>
