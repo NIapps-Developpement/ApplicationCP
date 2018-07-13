@@ -75,5 +75,7 @@ public class NewsPost extends AppCompatActivity {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+        final Intent mainIntent = new Intent(NewsPost.this, MainActivity.class);
+        NewsPost.this.startActivity(mainIntent);
     }
 }
