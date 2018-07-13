@@ -43,7 +43,7 @@ public class NewsPost extends AppCompatActivity {
                 Date c = Calendar.getInstance().getTime();
                 System.out.println("Current time => " + c);
 
-                SimpleDateFormat df = new SimpleDateFormat("dd/MMM");
+                SimpleDateFormat df = new SimpleDateFormat("dd/MMM  H:m");
                 String date = df.format(c);
                 String post = String.valueOf(message.getText());
                 SetNews(name, post, date, "1");

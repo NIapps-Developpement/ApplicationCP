@@ -10,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.ami.fundapter.BindDictionary;
 import com.ami.fundapter.FunDapter;
 import com.ami.fundapter.extractors.StringExtractor;
+import com.ami.fundapter.interfaces.DynamicImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,6 +24,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +45,7 @@ public class NewsFragment extends Fragment {
     public void GetNews(){
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("News")
+        db.collection("News").orderBy("Date")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -56,6 +59,7 @@ public class NewsFragment extends Fragment {
                                 itemsnf.add(msg);
                             }
 
+                            Collections.reverse(itemsnf);
 
                             BindDictionary<Item> dictionary = new BindDictionary<>();
                             dictionary.addStringField(R.id.itemNom, new StringExtractor<Item>() {
@@ -76,6 +80,20 @@ public class NewsFragment extends Fragment {
                                     return "" + itemsnf.getMessage();
                                 }
                             });
+                            dictionary.addDynamicImageField(R.id.itemPhoto,
+                                    new StringExtractor<Item>() {
+
+                                        @Override
+                                        public String getStringValue(Item item, int position) {
+                                            return null;
+                                        }
+
+                                    }, new DynamicImageLoader() {
+                                        @Override
+                                        public void loadImage(String url, ImageView view) {
+
+                                        }
+                                    });
                            /* dictionary.addStringField(R.id.itemPhoto, new StringExtractor<Item>() {
                                 @Override
                                 public String getStringValue(Item itemsnf, int position) {
