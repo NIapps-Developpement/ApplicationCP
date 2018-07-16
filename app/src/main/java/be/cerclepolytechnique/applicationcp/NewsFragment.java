@@ -109,6 +109,7 @@ public class NewsFragment extends Fragment {
 
 
 
+
                            /* dictionary.addStringField(R.id.itemPhoto, new StringExtractor<Item>() {
                                 @Override
                                 public String getStringValue(Item itemsnf, int position) {
