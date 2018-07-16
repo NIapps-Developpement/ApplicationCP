@@ -27,6 +27,7 @@ public class NewsPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_news);
         final String name = Login.getName();
+        final String photoNbr = Login.getPhotoNbr();
         final EditText message = findViewById(R.id.message);
         Button send = findViewById(R.id.send_message);
         Button retour = findViewById(R.id.retour_message);
@@ -46,7 +47,7 @@ public class NewsPost extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("dd/MMM  H:m");
                 String date = df.format(c);
                 String post = String.valueOf(message.getText());
-                SetNews(name, post, date, "1");
+                SetNews(name, post, date, photoNbr);
             }
         });
 

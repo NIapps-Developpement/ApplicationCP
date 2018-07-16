@@ -25,10 +25,12 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
     public static String name;
+    public static String photoNbr;
     Map<String, Object> k;
     EditText login;
     final List<String> CodeList = new ArrayList<>();
     final List<String> NameList = new ArrayList<>();
+    final List<String> PhotoNbrList = new ArrayList<>();
 
 
     private static final String TAG = "Login";
@@ -76,6 +78,7 @@ public class Login extends AppCompatActivity {
                                 Log.d(TAG, document.getId() + " => " + k + "\n\n\n");
                                 CodeList.add((String) k.get("Code"));
                                 NameList.add((String) k.get("Nom"));
+                                PhotoNbrList.add((String) k.get("PhotoNbr"));
 
                                 Log.d(TAG, String.valueOf(CodeList));
                             }
@@ -94,6 +97,7 @@ public class Login extends AppCompatActivity {
             i += 1;
             if(UserCode.equals(E)){
             setName(NameList.get(i-1));
+            setPhotoNbr(PhotoNbrList.get(i-1));
             Log.d(TAG, name);
             final Intent mainIntent = new Intent(Login.this, NewsPost.class);
             Login.this.startActivity(mainIntent);
@@ -106,6 +110,12 @@ public class Login extends AppCompatActivity {
     }
     public void setName(String nom){
            name = nom;
+    }
+    public static String getPhotoNbr(){
+        return photoNbr;
+    }
+    public void setPhotoNbr(String photoNombre){
+        photoNbr = photoNombre;
     }
 
 }

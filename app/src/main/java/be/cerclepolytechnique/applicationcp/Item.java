@@ -4,9 +4,9 @@ public class Item {
     private String name;
     private String date;
     private String message;
-    private int photonbr;
+    private String photonbr;
 
-    public Item(String name, String date, String message, int photonbr) {
+    public Item(String name, String date, String message, String photonbr) {
         this.name = name;
         this.date = date;
         this.message = message;
@@ -36,11 +36,11 @@ public class Item {
     public void setMessage(String message) {
         this.message = message;
     }
-    public int getPhotonbr() {
+    public String getPhotonbr() {
         return photonbr;
     }
 
-    public void setPhotonbr(int photonbr) {
+    public void setPhotonbr(String photonbr) {
         this.photonbr = photonbr;
     }
 }
