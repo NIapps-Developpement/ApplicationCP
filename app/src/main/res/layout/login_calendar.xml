@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/fond_square"
+    >
+<ImageView
+    android:id="@+id/logo"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:src="@drawable/cp_trans"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="40dp"/>
+    <EditText
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_fader_dark"
+        android:paddingVertical="8dp"
+        android:layout_below="@id/logo"
+        android:textSize="22dp"
+        android:hint="Mot de passe"
+        android:textColorHint="@color/grey_fade_medium"
+        android:textColor="@color/white"
+        android:layout_marginTop="35dp"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="20dp"
+        android:textCursorDrawable="@null"
+        android:inputType="numberPassword"
+      />
+    <Button
+        android:id="@+id/confirm_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_fader_medium"
+        android:paddingVertical="8dp"
+        android:layout_below="@id/login"
+        android:textSize="20dp"
+        android:text="S'identifier"
+        android:textAllCaps="false"
+        android:textColor="@color/grey_solid_lighter"
+        android:layout_marginTop="40dp"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="20dp" />
+    <Button
+        android:id="@+id/retour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_fade"
+        android:paddingVertical="8dp"
+        android:layout_below="@id/confirm_login"
+        android:textSize="20dp"
+        android:text="Retour"
+        android:textAllCaps="false"
+        android:textColor="@color/fade_black"
+        android:layout_marginTop="80dp"
+        android:textAlignment="center"
+        android:layout_marginHorizontal="20dp" />
+</RelativeLayout>
