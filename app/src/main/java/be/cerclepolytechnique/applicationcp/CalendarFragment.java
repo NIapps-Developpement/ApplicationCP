@@ -18,6 +18,14 @@ public class CalendarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.calendar_layout, container, false);
+        ImageButton button = getActivity().findViewById(R.id.send_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent mainIntent = new Intent(getActivity(), CalendarLogin.class);
+                getActivity().startActivity(mainIntent);
+            }
+        });
         return myView;
     }
 }
