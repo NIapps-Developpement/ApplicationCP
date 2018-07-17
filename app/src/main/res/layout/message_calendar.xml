@@ -96,7 +96,7 @@
         />
     </RelativeLayout>
     <Button
-        android:id="@+id/send_message"
+        android:id="@+id/seénd_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_fadest_medium"
