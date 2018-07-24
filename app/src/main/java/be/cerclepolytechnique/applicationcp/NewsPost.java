@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,6 +50,7 @@ public class NewsPost extends AppCompatActivity {
                 String date = df.format(c);
                 String post = String.valueOf(message.getText());
                 SetNews(name, post, date, photoNbr);
+
             }
         });
 
@@ -68,6 +71,13 @@ public class NewsPost extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                        String SENDER_ID = "93750736124";
+                        FirebaseMessaging fm = FirebaseMessaging.getInstance();
+                        fm.send(new RemoteMessage.Builder(SENDER_ID + "@gcm.googleapis.com")
+                                .setMessageId(Integer.toString(msgId.incrementAndGet()))
+                                .addData("my_message", "Hello World")
+                                .addData("my_action","SAY_HELLO")
+                                .build());
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

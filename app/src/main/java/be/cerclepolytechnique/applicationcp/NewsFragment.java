@@ -107,7 +107,7 @@ public class NewsFragment extends Fragment {
                                         @Override
                                         public void loadImage(String photonbr, ImageView image) {
                                             System.out.println("testi");
-                                            String url = "gs://application-cp.appspot.com/PhotosEvents/" + photonbr + ".jpg";
+                                            String url = "gs://application-cp.appspot.com/PhotosMembres/" + photonbr + ".jpg";
                                             StorageReference gsReference = storage.getReferenceFromUrl(url);
                                             Glide.with(getActivity())
                                                     .using(new FirebaseImageLoader())

@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:16.0.1'
     implementation 'com.firebaseui:firebase-ui-storage:0.6.0'
     implementation 'com.github.amigold.fundapter2:library:1.01'
-
+    implementation 'com.google.firebase:firebase-messaging:17.1.0'
 
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
 

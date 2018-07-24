@@ -95,7 +95,7 @@ public class CalendarLogin extends AppCompatActivity {
                 setName(NameList.get(i-1));
                 setPhotoNbr(PhotoNbrList.get(i-1));
                 Log.d(TAG, name);
-                final Intent mainIntent = new Intent(CalendarLogin.this, NewsPost.class);
+                final Intent mainIntent = new Intent(CalendarLogin.this, CalendarPost.class);
                 CalendarLogin.this.startActivity(mainIntent);
             }
         }
