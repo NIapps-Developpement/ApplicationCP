@@ -4,6 +4,43 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:fontFamily">@font/questrial</item>
         <item name="fontFamily">@font/questrial</item>
+        <item name="white">@color/white</item>
+        <item name="black">@color/black</item>
+        <item name="fade_black">@color/fade_black</item>
+        <item name="fade_white">@color/fade_white</item>
+        <item name="transparent">@color/transparent</item>
+        <item name="grey_solid_lighter">@color/grey_solid_lighter</item>
+        <item name="gey_solid_light">@color/gey_solid_light</item>
+        <item name="gey_solid_medium">@color/gey_solid_medium</item>
+        <item name="gey_solid_dark">@color/gey_solid_dark</item>
+        <item name="grey_fadish_medium">@color/grey_fadish_medium</item>
+        <item name="grey_fade_medium">@color/grey_fade_medium</item>
+        <item name="grey_fader_medium">@color/grey_fader_medium</item>
+        <item name="grey_fadest_medium">@color/grey_fadest_medium</item>
+        <item name="gey_fade_dark">@color/gey_fade_dark</item>
+        <item name="grey_fader_dark">@color/grey_fader_dark</item>
+        <item name="grey_fade_accent">@color/grey_fade_accent</item>
+
+    </style>
+    <style name="AppTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">@font/questrial</item>
+        <item name="fontFamily">@font/questrial</item>
+        <item name="white">@color/white</item>
+        <item name="black">@color/black</item>
+        <item name="fade_black">@color/fade_black</item>
+        <item name="fade_white">@color/fade_white</item>
+        <item name="transparent">@color/transparent</item>
+        <item name="grey_solid_lighter">@color/grey_solid_lighter</item>
+        <item name="gey_solid_light">@color/gey_solid_light</item>
+        <item name="gey_solid_medium">@color/gey_solid_medium</item>
+        <item name="gey_solid_dark">@color/gey_solid_dark</item>
+        <item name="grey_fadish_medium">@color/grey_fadish_medium</item>
+        <item name="grey_fade_medium">@color/grey_fade_medium</item>
+        <item name="grey_fader_medium">@color/grey_fader_medium</item>
+        <item name="grey_fadest_medium">@color/grey_fadest_medium</item>
+        <item name="gey_fade_dark">@color/gey_fade_dark</item>
+        <item name="grey_fader_dark">@color/grey_fader_dark</item>
+        <item name="grey_fade_accent">@color/grey_fade_accent</item>
 
     </style>
 </resources>
