@@ -28,16 +28,10 @@ import java.util.Map;
     public class ComiteFragment extends Fragment {
 
         View myView;
-        ImageView ilan;
-        ImageView maxime;
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             myView = inflater.inflate(R.layout.activity_scrolling_info, container, false);
-            ilan = (ImageView) myView.findViewById(R.id.photo);
-            ilan.setClipToOutline(true);
-            maxime = (ImageView) myView.findViewById(R.id.photo2);
-            maxime.setClipToOutline(true);
             return myView;
         }
     }
