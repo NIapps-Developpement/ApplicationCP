@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/titre">
 
-    <include layout="@layout/content_scrolling_info"
+    <include layout="@layout/content_scrolling_cal"
         />
     </RelativeLayout>
 </RelativeLayout>

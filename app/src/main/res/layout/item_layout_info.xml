@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_item_info"
+    android:paddingBottom="10dp">
+    <TextView
+        android:id="@+id/nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prénom Nom"
+        android:textSize="17dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/photo"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="5dp"/>
+    <TextView
+        android:id="@+id/role"
+        android:layout_alignLeft="@id/nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rôle"
+        android:layout_below="@+id/nom"
+        android:textSize="17dp"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/photo"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="5dp"/>
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_white_round"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"/>
+
+    <ImageButton
+        android:id="@+id/mail"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_below="@+id/role"
+        android:layout_toEndOf="@+id/role"
+        android:background="@drawable/contact_mail" />
+
+    <ImageButton
+        android:id="@+id/facebook1"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignStart="@+id/nom"
+        android:layout_below="@+id/role"
+        android:background="@drawable/contact_fb"
+        android:layout_marginBottom="10dp"/>
+</RelativeLayout>
