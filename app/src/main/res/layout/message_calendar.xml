@@ -72,6 +72,7 @@
         android:textAlignment="center"
         android:hint="JJ"
         android:inputType="number"
+        android:maxLength="2"
         />
     <EditText
         android:id="@+id/even_month"
@@ -87,6 +88,7 @@
         android:textAlignment="center"
         android:hint="MM"
         android:inputType="number"
+        android:maxLength="2"
         />
     <EditText
         android:id="@+id/even_year"
@@ -102,6 +104,7 @@
         android:textAlignment="center"
         android:hint="YY"
         android:inputType="number"
+        android:maxLength="2"
         />
     </RelativeLayout>
     <Button
