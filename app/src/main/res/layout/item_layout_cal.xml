@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_white_round"
+    android:background="@drawable/bg_item_cal"
     android:paddingBottom="10dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Titre"
         android:id="@+id/itemTitre"
-        android:textSize="35dp"
+        android:textSize="25dp"
         android:layout_below="@id/itemPhoto"
         android:layout_marginTop="20dp"
         android:textColor="@color/grey_fader_dark"
@@ -22,7 +22,7 @@
         android:layout_below="@+id/itemTitre"
         android:text="Text"
         android:textColor="@color/grey_fade_accent"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="7dp"
         />
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/itemDate"
-        android:textSize="17dp"
+        android:textSize="15dp"
         android:text="Date"
         android:textColor="@color/black"
         android:layout_below="@id/itemText"
@@ -42,7 +42,7 @@
     <ImageView
         android:id="@+id/itemPhoto"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:layout_below="@+id/itemPost"
         android:background="@drawable/bg_photo_cal"
         android:scaleType="centerCrop"/>
