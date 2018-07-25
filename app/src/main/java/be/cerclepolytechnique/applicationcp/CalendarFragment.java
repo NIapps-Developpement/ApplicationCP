@@ -17,7 +17,7 @@ public class CalendarFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.calendar_layout, container, false);
+        myView = inflater.inflate(R.layout.activity_scrolling_cal, container, false);
         ImageButton button = getActivity().findViewById(R.id.send_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

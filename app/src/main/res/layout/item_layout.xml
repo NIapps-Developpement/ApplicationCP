@@ -50,5 +50,6 @@
         android:layout_height="35dp"
         android:layout_below="@+id/itemPost"
         android:background="@drawable/bg_white_round"
-        android:layout_marginHorizontal="15dp" />
+        android:layout_marginHorizontal="15dp"
+        android:scaleType="centerCrop"/>
 </RelativeLayout>

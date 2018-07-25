@@ -58,16 +58,20 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/bg_white_solid"
         android:layout_marginVertical="15dp">
+
     <EditText
         android:id="@+id/even_day"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginLeft="10dp"
         android:textSize="15dp"
         android:textCursorDrawable="@null"
         android:textColorHint="@color/grey_fade_accent"
         android:textColor="@color/black"
+        android:textAlignment="center"
+        android:hint="JJ"
+        android:inputType="number"
         />
     <EditText
         android:id="@+id/even_month"
@@ -75,12 +79,14 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="5dp"
         android:textSize="15dp"
         android:textCursorDrawable="@null"
         android:textColorHint="@color/grey_fade_accent"
         android:textColor="@color/black"
-
+        android:textAlignment="center"
+        android:hint="MM"
+        android:inputType="number"
         />
     <EditText
         android:id="@+id/even_year"
@@ -88,11 +94,14 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginRight="10dp"
         android:textSize="15dp"
         android:textCursorDrawable="@null"
         android:textColorHint="@color/grey_fade_accent"
         android:textColor="@color/black"
+        android:textAlignment="center"
+        android:hint="YY"
+        android:inputType="number"
         />
     </RelativeLayout>
     <Button

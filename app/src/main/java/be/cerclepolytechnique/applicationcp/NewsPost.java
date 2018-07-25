@@ -21,6 +21,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class NewsPost extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -73,6 +74,7 @@ public class NewsPost extends AppCompatActivity {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                         String SENDER_ID = "93750736124";
                         FirebaseMessaging fm = FirebaseMessaging.getInstance();
+                        AtomicInteger msgId = new AtomicInteger();
                         fm.send(new RemoteMessage.Builder(SENDER_ID + "@gcm.googleapis.com")
                                 .setMessageId(Integer.toString(msgId.incrementAndGet()))
                                 .addData("my_message", "Hello World")

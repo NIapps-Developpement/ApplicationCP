@@ -103,9 +103,11 @@ public class NewsFragment extends Fragment {
                                             return itemsnf.getPhotonbr();
 
                                         }
+
                                     }, new DynamicImageLoader() {
                                         @Override
                                         public void loadImage(String photonbr, ImageView image) {
+                                            image.setClipToOutline(true);
                                             System.out.println("testi");
                                             String url = "gs://application-cp.appspot.com/PhotosMembres/" + photonbr + ".jpg";
                                             StorageReference gsReference = storage.getReferenceFromUrl(url);
@@ -131,6 +133,7 @@ public class NewsFragment extends Fragment {
 
                             ListView lvItem = (ListView)myView.findViewById(R.id.list_itemnf);
                             lvItem.setAdapter(adapter);
+
 
 
 
