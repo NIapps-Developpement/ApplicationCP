@@ -25,7 +25,6 @@
         android:textSize="17dp"
         android:textColor="@color/white"
         android:layout_toRightOf="@+id/photo"
-        android:layout_marginLeft="40dp"
         android:layout_marginBottom="5dp"/>
     <ImageView
         android:id="@+id/photo"
@@ -35,20 +34,62 @@
         android:layout_margin="10dp"
         android:scaleType="centerCrop"/>
 
-    <ImageButton
-        android:id="@+id/mail"
-        android:layout_width="23dp"
-        android:layout_height="23dp"
-        android:layout_below="@+id/role"
-        android:layout_toEndOf="@+id/role"
-        android:background="@drawable/contact_mail" />
-
-    <ImageButton
-        android:id="@+id/facebook1"
+    <ImageView
+        android:id="@+id/facebook_logo"
         android:layout_width="23dp"
         android:layout_height="23dp"
         android:layout_alignStart="@+id/nom"
         android:layout_below="@+id/role"
         android:background="@drawable/contact_fb"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:id="@+id/facebook"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:background="@color/transparent"
+        android:textColor="@color/transparent"
+        android:layout_alignStart="@+id/facebook_logo"
+        android:layout_alignBottom="@+id/facebook_logo"
+        android:autoLink="web"
+        android:textColorLink="@color/transparent"/>
+
+    <ImageView
+        android:id="@+id/mail_logo"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_below="@+id/role"
+        android:layout_toRightOf="@+id/facebook_logo"
+        android:background="@drawable/contact_mail"
+        android:layout_marginHorizontal="10dp"/>
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:background="@color/transparent"
+        android:textColor="@color/transparent"
+        android:layout_alignStart="@+id/mail_logo"
+        android:layout_alignBottom="@+id/mail_logo"
+       android:autoLink="email"
+        android:textColorLink="@color/transparent"/>
+
+    <ImageView
+        android:id="@+id/phone_logo"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_below="@+id/role"
+        android:background="@drawable/contact_phone"
+        android:layout_toRightOf="@+id/mail_logo"
+        android:layout_marginHorizontal="10dp"/>
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:background="@color/transparent"
+        android:textColor="@color/transparent"
+        android:layout_alignStart="@+id/phone_logo"
+        android:layout_alignBottom="@+id/phone_logo"
+        android:autoLink="phone"
+        android:textColorLink="@color/transparent"/>
+
 </RelativeLayout>
