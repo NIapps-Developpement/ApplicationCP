@@ -42,7 +42,7 @@
         android:layout_alignStart="@+id/nom"
         android:layout_below="@+id/role"
         android:background="@drawable/contact_fb"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="6dp"
         android:layout_marginRight="10dp"/>
     <TextView
         android:id="@+id/facebook"
