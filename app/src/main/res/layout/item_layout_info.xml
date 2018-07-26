@@ -31,8 +31,9 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="@drawable/bg_white_round"
-        android:layout_margin="10dp"
-        android:scaleType="centerCrop"/>
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="20dp"/>
 
     <ImageView
         android:id="@+id/facebook_logo"
