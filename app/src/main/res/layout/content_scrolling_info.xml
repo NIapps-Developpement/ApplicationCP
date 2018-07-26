@@ -8,5 +8,7 @@ android:layout_width="match_parent" android:layout_height="match_parent">
     android:dividerHeight="18dp"
     android:divider="@color/transparent"
     android:scrollbars="none"
+    android:paddingBottom="40dp"
+    android:clipToPadding="false"
    />
 </RelativeLayout>
