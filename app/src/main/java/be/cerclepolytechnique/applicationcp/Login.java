@@ -34,10 +34,8 @@ public class Login extends AppCompatActivity {
     final List<String> NameList = new ArrayList<>();
     final List<String> PhotoNbrList = new ArrayList<>();
     final CharSequence text1 = "Votre login n'est pas correct";
-    final CharSequence text2 = "Veuillez entrer un login";
     final int duration = Toast.LENGTH_SHORT;
 
-    final String[] check = new String[1];
 
 
     private static final String TAG = "Login";

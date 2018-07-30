@@ -1,5 +1,6 @@
 package be.cerclepolytechnique.applicationcp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,6 +29,9 @@ public class CalendarLogin extends AppCompatActivity {
     final List<String> CodeList = new ArrayList<>();
     final List<String> NameList = new ArrayList<>();
     final List<String> PhotoNbrList = new ArrayList<>();
+    final CharSequence text1 = "Votre login n'est pas correct";
+    final int duration = Toast.LENGTH_SHORT;
+
 
 
     private static final String TAG = "Login";
@@ -89,6 +94,7 @@ public class CalendarLogin extends AppCompatActivity {
         int i = 0;
         EditText login = findViewById(R.id.login);
         String UserCode = login.getText().toString();
+        final Context context = getApplicationContext();
         for (String E : CodeList){
             i += 1;
             if(UserCode.equals(E)){
@@ -98,6 +104,9 @@ public class CalendarLogin extends AppCompatActivity {
                 final Intent mainIntent = new Intent(CalendarLogin.this, CalendarPost.class);
                 CalendarLogin.this.startActivity(mainIntent);
             }
+            else {Toast toast = Toast.makeText(context, text1, duration);
+                toast.show();}
+
         }
 
     }
