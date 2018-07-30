@@ -1,5 +1,6 @@
 package be.cerclepolytechnique.applicationcp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,8 +34,13 @@ public class NewsPost extends AppCompatActivity {
         final String name = Login.getName();
         final String photoNbr = Login.getPhotoNbr();
         final EditText message = findViewById(R.id.message);
+        final CharSequence text2 = "Veuillez entrer un message";
+        final int duration = Toast.LENGTH_SHORT;
+        final Context context = getApplicationContext();
         Button send = findViewById(R.id.send_message);
         Button retour = findViewById(R.id.retour_message);
+        String service;
+        final String[] check = new String[1];
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,13 +51,20 @@ public class NewsPost extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                check[0] = message.getText().toString();
+
+                if(check[0].isEmpty()){
+                    Toast toast = Toast.makeText(context, text2, duration);
+                    toast.show();
+                }
+                else {
                 Date c = Calendar.getInstance().getTime();
                 System.out.println("Current time => " + c);
 
                 SimpleDateFormat df = new SimpleDateFormat("dd/MMM  H:m");
                 String date = df.format(c);
                 String post = String.valueOf(message.getText());
-                SetNews(name, post, date, photoNbr);
+                SetNews(name, post, date, photoNbr);}
 
             }
         });
