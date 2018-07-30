@@ -37,10 +37,11 @@ public class NewsPost extends AppCompatActivity {
         final CharSequence text2 = "Veuillez entrer un message";
         final int duration = Toast.LENGTH_SHORT;
         final Context context = getApplicationContext();
+        final String[] check = new String[1];
         Button send = findViewById(R.id.send_message);
         Button retour = findViewById(R.id.retour_message);
         String service;
-        final String[] check = new String[1];
+
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

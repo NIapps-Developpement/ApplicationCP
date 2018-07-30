@@ -1,6 +1,7 @@
 package be.cerclepolytechnique.applicationcp;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +33,11 @@ public class Login extends AppCompatActivity {
     final List<String> CodeList = new ArrayList<>();
     final List<String> NameList = new ArrayList<>();
     final List<String> PhotoNbrList = new ArrayList<>();
+    final CharSequence text1 = "Votre login n'est pas correct";
+    final CharSequence text2 = "Veuillez entrer un login";
+    final int duration = Toast.LENGTH_SHORT;
+
+    final String[] check = new String[1];
 
 
     private static final String TAG = "Login";
@@ -39,7 +46,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_news);
-
+        final Context context = getApplicationContext();
         Button confirm = findViewById(R.id.confirm_login);
         Button retour = findViewById(R.id.retour);
         retour.setOnClickListener(new View.OnClickListener() {
@@ -52,9 +59,6 @@ public class Login extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              /*  AsyncCaller asy = new AsyncCaller();
-                asy.execute();
-                */
               GetCode();
             }
         });
@@ -93,6 +97,7 @@ public class Login extends AppCompatActivity {
         int i = 0;
         EditText login = findViewById(R.id.login);
         String UserCode = login.getText().toString();
+        final Context context = getApplicationContext();
         for (String E : CodeList){
             i += 1;
             if(UserCode.equals(E)){
@@ -101,6 +106,10 @@ public class Login extends AppCompatActivity {
             Log.d(TAG, name);
             final Intent mainIntent = new Intent(Login.this, NewsPost.class);
             Login.this.startActivity(mainIntent);
+
+                }
+                else {Toast toast = Toast.makeText(context, text1, duration);
+                toast.show();
         }
         }
 
