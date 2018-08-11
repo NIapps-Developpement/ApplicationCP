@@ -3,9 +3,11 @@ package be.cerclepolytechnique.applicationcp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,8 +31,9 @@ public class CalendarLogin extends AppCompatActivity {
     final List<String> CodeList = new ArrayList<>();
     final List<String> NameList = new ArrayList<>();
     final List<String> PhotoNbrList = new ArrayList<>();
-    final CharSequence text1 = "Votre login n'est pas correct";
+    final CharSequence text1 = "Votre code n'est pas correct";
     final int duration = Toast.LENGTH_SHORT;
+
 
 
 
@@ -40,7 +43,7 @@ public class CalendarLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_news);
-
+        final Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
         Button confirm = findViewById(R.id.confirm_login);
         Button retour = findViewById(R.id.retour);
         retour.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +59,8 @@ public class CalendarLogin extends AppCompatActivity {
               /*  AsyncCaller asy = new AsyncCaller();
                 asy.execute();
                 */
-                GetCode();
+
+                GetCode(v);
             }
         });
         retour.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +70,7 @@ public class CalendarLogin extends AppCompatActivity {
             }
         });
     }
-    private void GetCode(){
+    private void GetCode(final Vibrator v){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Codes")
                 .get()
@@ -86,25 +90,31 @@ public class CalendarLogin extends AppCompatActivity {
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
                         }
-                        CheckCode();
+                        final Context context = getApplicationContext();
+                        Toast toast = Toast.makeText(context, text1, duration);
+                        CheckCode(toast, v);
                     }
                 });
     }
-    private void CheckCode() {
+
+
+        private void CheckCode(Toast toast, Vibrator v) {
         int i = 0;
         EditText login = findViewById(R.id.login);
         String UserCode = login.getText().toString();
-        final Context context = getApplicationContext();
         for (String E : CodeList){
             i += 1;
             if(UserCode.equals(E)){
+                v.cancel();
                 setName(NameList.get(i-1));
                 setPhotoNbr(PhotoNbrList.get(i-1));
-                Log.d(TAG, name);
                 final Intent mainIntent = new Intent(CalendarLogin.this, CalendarPost.class);
                 CalendarLogin.this.startActivity(mainIntent);
+
+                toast.cancel();
             }
-            else {Toast toast = Toast.makeText(context, text1, duration);
+            else {
+                v.vibrate(500);
                 toast.show();}
 
         }

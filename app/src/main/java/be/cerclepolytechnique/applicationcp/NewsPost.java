@@ -42,7 +42,7 @@ public class NewsPost extends AppCompatActivity {
         Button retour = findViewById(R.id.retour_message);
         String service;
 
-        retour.setOnClickListener(new View.OnClickListener() {
+        retour.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Intent mainIntent = new Intent(NewsPost.this, MainActivity.class);

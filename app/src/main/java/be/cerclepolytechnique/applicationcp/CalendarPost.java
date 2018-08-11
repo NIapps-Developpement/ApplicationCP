@@ -45,6 +45,10 @@ public class CalendarPost extends AppCompatActivity {
         setContentView(R.layout.message_calendar);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        final CharSequence textToast = "Veuillez remplir tous les champs";
+        final int duration = Toast.LENGTH_SHORT;
+        final Context context = getApplicationContext();
+        final String[] check = new String[5];
         final String name = Login.getName();
         final String photoNbr = Login.getPhotoNbr();
         final EditText eventDescr = findViewById(R.id.event_text);
@@ -67,10 +71,37 @@ public class CalendarPost extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                check[0] = eventDescr.getText().toString();
+                check[1] = eventName.getText().toString();
+                check[2] = dateday.getText().toString();
+                check[3] = datemonth.getText().toString();
+                check[4] = dateyear.getText().toString();
+                if(check[0].isEmpty()){
+                    Toast toast = Toast.makeText(context, textToast, duration);
+                    toast.show();
+                }
+                else if(check[1].isEmpty()){
+                    Toast toast = Toast.makeText(context, textToast, duration);
+                    toast.show();
+                }
+                else if(check[2].isEmpty()){
+                    Toast toast = Toast.makeText(context, textToast, duration);
+                    toast.show();
+                }
+                else if(check[3].isEmpty()){
+                    Toast toast = Toast.makeText(context, textToast, duration);
+                    toast.show();
+                }
+                else if(check[4].isEmpty()){
+                    Toast toast = Toast.makeText(context, textToast, duration);
+                    toast.show();
+                }
+                else{
                 String postName = String.valueOf(eventName.getText());
                 String postDesc = String.valueOf(eventDescr.getText());
                 String Date = String.valueOf(dateday.getText() + "/" + datemonth.getText() + "/" + dateyear.getText());
                 upload(postName, postDesc, Date);
+            }
             }
         });
         addPhoto.setOnClickListener(new View.OnClickListener() {
