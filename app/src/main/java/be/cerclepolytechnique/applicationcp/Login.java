@@ -80,7 +80,7 @@ public class Login extends AppCompatActivity {
                                 k = document.getData();
                                 Log.d(TAG, document.getId() + " => " + k + "\n\n\n");
                                 CodeList.add((String) k.get("Code"));
-                                NameList.add((String) k.get("Nom"));
+                                NameList.add((String) k.get("Name"));
                                 PhotoNbrList.add((String) k.get("PhotoNbr"));
 
                                 Log.d(TAG, String.valueOf(CodeList));
@@ -104,6 +104,7 @@ public class Login extends AppCompatActivity {
             if(UserCode.equals(E)){
                 setName(NameList.get(i-1));
                 setPhotoNbr(PhotoNbrList.get(i-1));
+
                 final Intent mainIntent = new Intent(Login.this, NewsPost.class);
                 Login.this.startActivity(mainIntent);
 

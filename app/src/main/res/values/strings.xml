@@ -3,4 +3,5 @@
     <string name="title_home"></string>
     <string name="title_dashboard"></string>
     <string name="title_notifications"></string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 </resources>
