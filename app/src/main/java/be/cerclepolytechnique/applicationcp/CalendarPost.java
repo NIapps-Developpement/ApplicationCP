@@ -66,6 +66,7 @@ public class CalendarPost extends AppCompatActivity {
             public void onClick(View view) {
                 final Intent mainIntent = new Intent(CalendarPost.this, MainActivity.class);
                 CalendarPost.this.startActivity(mainIntent);
+                finish();
             }
         });
         send.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +160,7 @@ public class CalendarPost extends AppCompatActivity {
 
                                             final Intent mainIntent = new Intent(CalendarPost.this, MainActivity.class);
                                             CalendarPost.this.startActivity(mainIntent);
+                                            finish();
                                             Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                         }
                                     })

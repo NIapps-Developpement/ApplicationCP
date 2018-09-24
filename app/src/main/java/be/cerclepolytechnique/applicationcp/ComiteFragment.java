@@ -2,6 +2,7 @@ package be.cerclepolytechnique.applicationcp;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.ami.fundapter.BindDictionary;

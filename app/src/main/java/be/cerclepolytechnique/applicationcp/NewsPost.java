@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
@@ -47,6 +48,7 @@ public class NewsPost extends AppCompatActivity {
             public void onClick(View view) {
                 final Intent mainIntent = new Intent(NewsPost.this, MainActivity.class);
                 NewsPost.this.startActivity(mainIntent);
+                finish();
             }
         });
         send.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +81,7 @@ public class NewsPost extends AppCompatActivity {
         Post.put("Name", name);
         Post.put("Post", post);
         Post.put("Date", date);
+        Post.put("TimeStamp", FieldValue.serverTimestamp());
         Post.put("PhotoNbr", photonbr);
 
 // Add a new document with a generated ID
@@ -88,14 +91,7 @@ public class NewsPost extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                        String SENDER_ID = "93750736124";
-                        FirebaseMessaging fm = FirebaseMessaging.getInstance();
-                        AtomicInteger msgId = new AtomicInteger();
-                        fm.send(new RemoteMessage.Builder(SENDER_ID + "@gcm.googleapis.com")
-                                .setMessageId(Integer.toString(msgId.incrementAndGet()))
-                                .addData("my_message", "Hello World")
-                                .addData("my_action","SAY_HELLO")
-                                .build());
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -106,5 +102,6 @@ public class NewsPost extends AppCompatActivity {
                 });
         final Intent mainIntent = new Intent(NewsPost.this, MainActivity.class);
         NewsPost.this.startActivity(mainIntent);
+        finish();
     }
 }

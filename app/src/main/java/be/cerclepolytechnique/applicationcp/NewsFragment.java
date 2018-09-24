@@ -6,16 +6,13 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,61 +27,63 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.pedromassango.doubleclick.DoubleClick;
+import com.pedromassango.doubleclick.DoubleClickListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class NewsFragment extends Fragment {
+import static android.view.GestureDetector.*;
+
+public class NewsFragment extends Fragment
+{
+
+    ImageButton button;
     private static final String TAG = "NewsFragment";
     private static final String SENDER_ID = "Ilan";
     Map<String,Object> k;
     View myView;
+    ListView liste;
+    GestureDetector gestureDetector;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         myView = inflater.inflate(R.layout.activity_scrolling, container, false);
-        ImageButton button = getActivity().findViewById(R.id.send_button);
-        FirebaseMessaging.getInstance().subscribeToTopic("CPAPP");
-            /*    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = getString(R.string.msg_subscribed);
-                        if (!task.isSuccessful()) {
-                            msg = getString(R.string.msg_subscribe_failed);
-                        }
-                        Log.d(TAG, msg);
-                        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
-*/
-        button.setOnClickListener(new View.OnClickListener() {
+        liste = getActivity().findViewById(R.id.list_itemnf);
+        ImageButton fragment_relative= myView.findViewById(R.id.testbutnf);
+        fragment_relative.setOnLongClickListener(new View.OnLongClickListener() {
+
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View v) {
                 final Intent mainIntent = new Intent(getActivity(), Login.class);
                 getActivity().startActivity(mainIntent);
-            }
-        });
+                return true;
 
+            }
+
+        });
+     //   ImageButton button = getActivity().findViewById(R.id.send_button);
+        FirebaseMessaging.getInstance().subscribeToTopic("CPAPP");
         GetNews();
+
+
 
         // Instanciating an array list (you don't need to do this,
         // you already have yours).
 
         return myView;
     }
+
+
     public void GetNews(){
         final Context contextnet = this.getActivity().getApplicationContext();
 
@@ -148,7 +147,6 @@ public class NewsFragment extends Fragment {
                                         @Override
                                         public void loadImage(String photonbr, ImageView image) {
                                             image.setClipToOutline(true);
-                                            System.out.println("testi");
                                             String url = "gs://application-cp.appspot.com/PhotosMembres/" + photonbr + ".jpg";
                                             StorageReference gsReference = storage.getReferenceFromUrl(url);
                                             Glide.with(getActivity())
@@ -185,4 +183,7 @@ public class NewsFragment extends Fragment {
                 });
 
     }
+
+
+
 }

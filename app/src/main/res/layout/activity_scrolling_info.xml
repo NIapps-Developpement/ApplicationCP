@@ -9,10 +9,10 @@
     tools:layout_editor_absoluteY="81dp">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/titre">
-
     <include layout="@layout/content_scrolling_info"
         />
     </RelativeLayout>

@@ -6,12 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="be.cerclepolytechnique.applicationcp.MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="81dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:contextClickable="true">
 
     <RelativeLayout
+        android:id="@+id/layoutpress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/titre">
+        android:layout_below="@id/titre"
+        android:clickable="true"
+        android:focusable="true"
+        android:contextClickable="true">
 
     <include layout="@layout/content_scrolling"
         />

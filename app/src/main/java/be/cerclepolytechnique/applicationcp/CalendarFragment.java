@@ -3,13 +3,16 @@ package be.cerclepolytechnique.applicationcp;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.gesture.Gesture;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -39,26 +42,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 
-public class CalendarFragment extends Fragment {
+public class CalendarFragment extends Fragment{
     private static final String TAG = "CalFragment";
     Map<String,Object> k;
 
     View myView;
     ImageButton button;
+
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_scrolling_cal, container, false);
-        ImageButton button = getActivity().findViewById(R.id.send_button);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        ImageButton fragment_relative= myView.findViewById(R.id.testbutcal);
+        fragment_relative.setOnLongClickListener(new View.OnLongClickListener() {
+
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View v) {
                 final Intent mainIntent = new Intent(getActivity(), CalendarLogin.class);
                 getActivity().startActivity(mainIntent);
+                return true;
 
             }
-        });
 
+        });
         GetCalendar();
 
         return myView;
@@ -164,5 +173,6 @@ public class CalendarFragment extends Fragment {
                 });
 
     }
+
 
 }
