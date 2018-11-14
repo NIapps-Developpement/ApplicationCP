@@ -3,6 +3,8 @@ package be.cerclepolytechnique.applicationcp;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -28,6 +31,7 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -41,24 +45,29 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import static android.content.Context.MODE_PRIVATE;
 import static android.view.GestureDetector.*;
 
 public class NewsFragment extends Fragment
 {
-
-    ImageButton button;
+    
     private static final String TAG = "NewsFragment";
     private static final String SENDER_ID = "Ilan";
     Map<String,Object> k;
+    String id;
     View myView;
+    public static final String PREFS_NAME = "MyApp_Settings";
     ListView liste;
-    GestureDetector gestureDetector;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         myView = inflater.inflate(R.layout.activity_scrolling, container, false);
         liste = getActivity().findViewById(R.id.list_itemnf);
+        final SharedPreferences settings = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
+        // Writing data to SharedPreferences
+
         ImageButton fragment_relative= myView.findViewById(R.id.testbutnf);
         fragment_relative.setOnLongClickListener(new View.OnLongClickListener() {
 
@@ -71,9 +80,11 @@ public class NewsFragment extends Fragment
             }
 
         });
-     //   ImageButton button = getActivity().findViewById(R.id.send_button);
+        
+
         FirebaseMessaging.getInstance().subscribeToTopic("CPAPP");
         GetNews();
+
 
 
 
@@ -97,7 +108,7 @@ public class NewsFragment extends Fragment
         }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("News").orderBy("Date")
+        db.collection("News").orderBy("TimeStamp", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -106,6 +117,7 @@ public class NewsFragment extends Fragment
                         if (task.isSuccessful()) {
                             final ArrayList<Item> itemsnf = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
+                                id = document.getId();
                                 k = document.getData();
                                 Log.d(TAG, document.getId() + " => " + document.getData() + "\n\n\n");
                                 Item msg = new Item((String) k.get("Name"),(String) k.get("Date"),(String) k.get("Post"), (String) k.get("PhotoNbr"));
@@ -115,6 +127,8 @@ public class NewsFragment extends Fragment
                             Collections.reverse(itemsnf);
 
                             BindDictionary<Item> dictionary = new BindDictionary<>();
+
+
                             dictionary.addStringField(R.id.itemNom, new StringExtractor<Item>() {
                                 @Override
                                 public String getStringValue(Item itemsnf, int position) {
@@ -171,6 +185,7 @@ public class NewsFragment extends Fragment
 
                             ListView lvItem = (ListView)myView.findViewById(R.id.list_itemnf);
                             lvItem.setAdapter(adapter);
+
 
 
 
