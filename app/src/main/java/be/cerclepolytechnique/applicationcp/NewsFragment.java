@@ -45,6 +45,7 @@ import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -60,7 +61,7 @@ public class NewsFragment extends Fragment
     Map<String,Object> k;
     String id;
     View myView;
-
+    String[] testarray = {"Ignacio S. - Président"};
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
     public static final String PREFS_NAME = "MyApp_Settings";
@@ -68,7 +69,7 @@ public class NewsFragment extends Fragment
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-       final String[] listItems = {"1","2"};
+       final String[] listItems = {"Rémi C. - JobFair","Ignacio S. - Président"};
         myView = inflater.inflate(R.layout.activity_scrolling, container, false);
         liste = getActivity().findViewById(R.id.list_itemnf);
         final SharedPreferences settings = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -147,6 +148,7 @@ public class NewsFragment extends Fragment
 
 
     public void GetNews(){
+        List<String> testlist = Arrays.asList(testarray);
         final Context contextnet = this.getActivity().getApplicationContext();
 
         ConnectivityManager connectivityManager = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -159,7 +161,7 @@ public class NewsFragment extends Fragment
         }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("News").orderBy("TimeStamp", Query.Direction.ASCENDING)
+        db.collection("News").orderBy("TimeStamp", Query.Direction.ASCENDING).whereEqualTo("Name", "Ilan R. - Web-Info")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
