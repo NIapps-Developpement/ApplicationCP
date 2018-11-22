@@ -61,7 +61,7 @@ public class NewsFragment extends Fragment
     Map<String,Object> k;
     String id;
     View myView;
-    String[] testarray = {"Ignacio S. - Président"};
+    List<String> selected = new ArrayList<String>();
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
     public static final String PREFS_NAME = "MyApp_Settings";
@@ -92,7 +92,7 @@ public class NewsFragment extends Fragment
         
 
         FirebaseMessaging.getInstance().subscribeToTopic("CPAPP");
-        GetNews();
+
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
         mBuilder.setTitle("test");
         mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
@@ -124,7 +124,8 @@ public class NewsFragment extends Fragment
                         item = item + ", ";
                     }
                 }
-                Log.d(TAG, item);
+                selected.add(item);
+                GetNews();
             }
         });
 
@@ -148,9 +149,7 @@ public class NewsFragment extends Fragment
 
 
     public void GetNews(){
-        List<String> testlist = Arrays.asList(testarray);
         final Context contextnet = this.getActivity().getApplicationContext();
-
         ConnectivityManager connectivityManager = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
@@ -161,7 +160,7 @@ public class NewsFragment extends Fragment
         }
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("News").orderBy("TimeStamp", Query.Direction.ASCENDING).whereEqualTo("Name", "Ilan R. - Web-Info")
+        db.collection("News").orderBy("TimeStamp", Query.Direction.ASCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -173,8 +172,13 @@ public class NewsFragment extends Fragment
                                 id = document.getId();
                                 k = document.getData();
                                 Log.d(TAG, document.getId() + " => " + document.getData() + "\n\n\n");
-                                Item msg = new Item((String) k.get("Name"),(String) k.get("Date"),(String) k.get("Post"), (String) k.get("PhotoNbr"));
-                                itemsnf.add(msg);
+                                System.out.println(selected + "BLABLA");
+                               if(selected.contains((String) k.get("Name"))) {
+                                    Item msg = new Item((String) k.get("Name"), (String) k.get("Date"), (String) k.get("Post"), (String) k.get("PhotoNbr"));
+                                    itemsnf.add(msg);
+                                }else{
+                                   System.out.println("prout");
+                               }
                             }
 
                             Collections.reverse(itemsnf);
