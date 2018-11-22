@@ -1,7 +1,10 @@
 package be.cerclepolytechnique.applicationcp;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
@@ -21,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 
 import com.ami.fundapter.BindDictionary;
 import com.ami.fundapter.FunDapter;
@@ -56,12 +60,15 @@ public class NewsFragment extends Fragment
     Map<String,Object> k;
     String id;
     View myView;
+
+    boolean[] checkedItems;
+    ArrayList<Integer> mUserItems = new ArrayList<>();
     public static final String PREFS_NAME = "MyApp_Settings";
     ListView liste;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+       final String[] listItems = {"1","2"};
         myView = inflater.inflate(R.layout.activity_scrolling, container, false);
         liste = getActivity().findViewById(R.id.list_itemnf);
         final SharedPreferences settings = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
@@ -77,6 +84,7 @@ public class NewsFragment extends Fragment
                 getActivity().startActivity(mainIntent);
                 return true;
 
+
             }
 
         });
@@ -84,7 +92,50 @@ public class NewsFragment extends Fragment
 
         FirebaseMessaging.getInstance().subscribeToTopic("CPAPP");
         GetNews();
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+        mBuilder.setTitle("test");
+        mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+//                        if (isChecked) {
+//                            if (!mUserItems.contains(position)) {
+//                                mUserItems.add(position);
+//                            }
+//                        } else if (mUserItems.contains(position)) {
+//                            mUserItems.remove(position);
+//                        }
+                if(isChecked){
+                    mUserItems.add(position);
+                }else{
+                    mUserItems.remove((Integer.valueOf(position)));
+                }
+            }
+        });
 
+        mBuilder.setCancelable(false);
+        mBuilder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                String item = "";
+                for (int i = 0; i < mUserItems.size(); i++) {
+                    item = item + listItems[mUserItems.get(i)];
+                    if (i != mUserItems.size() - 1) {
+                        item = item + ", ";
+                    }
+                }
+                Log.d(TAG, item);
+            }
+        });
+
+        mBuilder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
 
 
 
