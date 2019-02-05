@@ -20,9 +20,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="30dp"
             android:layout_toRightOf="@id/titre"
             android:background="@drawable/ic_send" />
+
+        <ImageButton
+            android:id="@+id/param_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@id/titre"
+            android:background="@android:drawable/ic_menu_manage" />
         <TextView
             android:id="@+id/titre"
             android:layout_width="wrap_content"

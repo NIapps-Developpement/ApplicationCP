@@ -1,10 +1,12 @@
 package be.cerclepolytechnique.applicationcp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,11 +23,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
+    String[] listItems;
+    boolean[] checkedItems;
+    ArrayList<Integer> mUserItems = new ArrayList<>();
     Map<String,Object> k;
 
 
@@ -38,16 +45,92 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             android.app.FragmentManager fragmentManager = getFragmentManager();
             ImageButton button = findViewById(R.id.send_button);
+            ImageButton parambutton = findViewById(R.id.param_button);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    parambutton.setBackground(getResources().getDrawable(android.R.drawable.ic_menu_manage));
                     button.setBackground(getResources().getDrawable(R.drawable.ic_send));
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            final Intent mainIntent = new Intent(MainActivity.this, Login.class);
+                            MainActivity.this.startActivity(mainIntent);
+                        }
+                    });
+                    parambutton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                            mBuilder.setTitle(R.string.dialog_title);
+                            mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+//                        if (isChecked) {
+//                            if (!mUserItems.contains(position)) {
+//                                mUserItems.add(position);
+//                            }
+//                        } else if (mUserItems.contains(position)) {
+//                            mUserItems.remove(position);
+//                        }
+                                    if(isChecked){
+                                        mUserItems.add(position);
+                                    }else{
+                                        mUserItems.remove((Integer.valueOf(position)));
+                                    }
+                                }
+                    });
+                            mBuilder.setCancelable(false);
+                            mBuilder.setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    String item = "";
+                                    for (int i = 0; i < mUserItems.size(); i++) {
+                                        item = item + listItems[mUserItems.get(i)];
+                                        if (i != mUserItems.size() - 1) {
+                                            item = item + ", ";
+                                        }
+                                    }
+
+                                }
+                            });
+
+                            mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+
+                            mBuilder.setNeutralButton(R.string.clear_all_label, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    for (int i = 0; i < checkedItems.length; i++) {
+                                        checkedItems[i] = false;
+                                        mUserItems.clear();
+
+                                    }
+                                }
+                            });
+
+                            AlertDialog mDialog = mBuilder.create();
+                            mDialog.show();
+                        }
+                    });
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
                                     , new NewsFragment())
                             .commit();
                     return true;
                 case R.id.navigation_dashboard:
+                    parambutton.setBackground(getResources().getDrawable(R.color.gey_solid_dark));
                     button.setBackground(getResources().getDrawable(R.drawable.ic_note_add));
+                    button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            final Intent mainIntent = new Intent(MainActivity.this, CalendarLogin.class);
+                            MainActivity.this.startActivity(mainIntent);
+                        }
+                    });
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
                                     , new CalendarFragment())
@@ -69,15 +152,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ImageButton button = findViewById(R.id.send_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Intent mainIntent = new Intent(MainActivity.this, Login.class);
-                MainActivity.this.startActivity(mainIntent);
-            }
-        });
+        listItems = getResources().getStringArray(R.array.shopping_item);
+        checkedItems = new boolean[listItems.length];
         //RGEIRPGHEGBE
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

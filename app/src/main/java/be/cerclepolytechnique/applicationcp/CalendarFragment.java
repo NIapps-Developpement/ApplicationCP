@@ -56,18 +56,6 @@ public class CalendarFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.activity_scrolling_cal, container, false);
 
-        ImageButton fragment_relative= myView.findViewById(R.id.testbutcal);
-        fragment_relative.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                final Intent mainIntent = new Intent(getActivity(), CalendarLogin.class);
-                getActivity().startActivity(mainIntent);
-                return true;
-
-            }
-
-        });
         GetCalendar();
 
         return myView;
