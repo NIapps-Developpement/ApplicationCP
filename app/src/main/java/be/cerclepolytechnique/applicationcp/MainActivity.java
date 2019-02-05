@@ -37,24 +37,24 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             android.app.FragmentManager fragmentManager = getFragmentManager();
-     //       ImageButton button = findViewById(R.id.send_button);
+            ImageButton button = findViewById(R.id.send_button);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-      //             button.setBackground(getResources().getDrawable(R.drawable.ic_send));
+                    button.setBackground(getResources().getDrawable(R.drawable.ic_send));
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
                                     , new NewsFragment())
                             .commit();
                     return true;
                 case R.id.navigation_dashboard:
-                   // button.setBackground(getResources().getDrawable(R.drawable.ic_note_add));
+                    button.setBackground(getResources().getDrawable(R.drawable.ic_note_add));
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
                                     , new CalendarFragment())
                             .commit();
                     return true;
                 case R.id.navigation_notifications:
-       //            button.setBackgroundResource(0);
+                    button.setBackgroundResource(0);
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
                                     , new ComiteFragment())
@@ -70,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageButton button = findViewById(R.id.send_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent mainIntent = new Intent(MainActivity.this, Login.class);
+                MainActivity.this.startActivity(mainIntent);
+            }
+        });
         //RGEIRPGHEGBE
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

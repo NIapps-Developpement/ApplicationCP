@@ -15,13 +15,31 @@
         android:background="@color/gey_solid_dark"
         >
 
+        <ImageButton
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/titre"
+            android:background="@drawable/ic_send" />
+        <TextView
+            android:id="@+id/titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Cercle Polytechnique"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:paddingVertical="10dp"
+            android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 
     <include
         layout="@layout/content_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       android:layout_alignParentBottom="true"
+        android:layout_alignParentBottom="true"
         android:layout_below="@id/banner"/>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -33,16 +51,5 @@
         app:itemIconTint="@color/nav_icon"
         app:itemBackground="@drawable/selector_menu"
         android:layout_marginBottom="-16dp" />
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-    >
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" />
-
-    </android.support.design.widget.AppBarLayout>
 </RelativeLayout>
