@@ -3,6 +3,7 @@ package be.cerclepolytechnique.applicationcp;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -33,10 +34,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +50,8 @@ import static android.view.GestureDetector.*;
 
 public class NewsFragment extends Fragment
 {
-
+    ArrayList<Integer> wlist;
+    ArrayList<Integer> nflist;
     ImageButton button;
     private static final String TAG = "NewsFragment";
     private static final String SENDER_ID = "Ilan";
@@ -61,6 +67,7 @@ public class NewsFragment extends Fragment
         liste = getActivity().findViewById(R.id.list_itemnf);
 
         FirebaseMessaging.getInstance().subscribeToTopic("CPAPP");
+        nflist = LoadData();
         GetNews();
 
 
@@ -71,7 +78,20 @@ public class NewsFragment extends Fragment
         return myView;
     }
 
+    public ArrayList<Integer> LoadData(){
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("PARAMDELEG", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("PARAMDELEGLIST", null);
+        Type type = new TypeToken<ArrayList<Integer>>() {}.getType();
+        wlist = gson.fromJson(json, type);
 
+        if (wlist == null){
+            wlist = new ArrayList<>();
+        }
+        System.out.println(wlist);
+        return wlist;
+
+    }
     public void GetNews(){
         final Context contextnet = this.getActivity().getApplicationContext();
 
@@ -95,9 +115,15 @@ public class NewsFragment extends Fragment
                             final ArrayList<Item> itemsnf = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 k = document.getData();
+
                                 Log.d(TAG, document.getId() + " => " + document.getData() + "\n\n\n");
                                 Item msg = new Item((String) k.get("Name"),(String) k.get("Date"),(String) k.get("Post"), (String) k.get("PhotoNbr"));
-                                itemsnf.add(msg);
+                                if (Arrays.asList(nflist).contains(Integer.parseInt((String) k.get("PhotoNbr")))){
+                                    itemsnf.add(msg);
+                                }
+                                else{
+
+                                }
                             }
 
                             Collections.reverse(itemsnf);

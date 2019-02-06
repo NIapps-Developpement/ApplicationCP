@@ -88,7 +88,7 @@ public class CalendarFragment extends Fragment{
                                 itemsnf.add(msg);
                             }
 
-                            Collections.reverse(itemsnf);
+                           // Collections.reverse(itemsnf);
 
                             BindDictionary<ItemCal> dictionary = new BindDictionary<>();
                             dictionary.addStringField(R.id.itemTitre, new StringExtractor<ItemCal>() {
