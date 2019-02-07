@@ -39,6 +39,7 @@ import com.google.gson.reflect.TypeToken;
 import com.pedromassango.doubleclick.DoubleClick;
 import com.pedromassango.doubleclick.DoubleClickListener;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,8 +51,8 @@ import static android.view.GestureDetector.*;
 
 public class NewsFragment extends Fragment
 {
-    ArrayList<Integer> wlist;
-    ArrayList<Integer> nflist;
+    ArrayList<String> wlist;
+    ArrayList<String> nflist;
     ImageButton button;
     private static final String TAG = "NewsFragment";
     private static final String SENDER_ID = "Ilan";
@@ -67,7 +68,7 @@ public class NewsFragment extends Fragment
         liste = getActivity().findViewById(R.id.list_itemnf);
 
         FirebaseMessaging.getInstance().subscribeToTopic("CPAPP");
-        nflist = LoadData();
+
         GetNews();
 
 
@@ -78,11 +79,11 @@ public class NewsFragment extends Fragment
         return myView;
     }
 
-    public ArrayList<Integer> LoadData(){
+    public ArrayList<String> LoadData(){
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("PARAMDELEG", Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("PARAMDELEGLIST", null);
-        Type type = new TypeToken<ArrayList<Integer>>() {}.getType();
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
         wlist = gson.fromJson(json, type);
 
         if (wlist == null){
@@ -93,6 +94,7 @@ public class NewsFragment extends Fragment
 
     }
     public void GetNews(){
+        nflist = LoadData();
         final Context contextnet = this.getActivity().getApplicationContext();
 
         ConnectivityManager connectivityManager = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -118,7 +120,7 @@ public class NewsFragment extends Fragment
 
                                 Log.d(TAG, document.getId() + " => " + document.getData() + "\n\n\n");
                                 Item msg = new Item((String) k.get("Name"),(String) k.get("Date"),(String) k.get("Post"), (String) k.get("PhotoNbr"));
-                                if (Arrays.asList(nflist).contains(Integer.parseInt((String) k.get("PhotoNbr")))){
+                                if (!nflist.contains(k.get("PhotoNbr"))){
                                     itemsnf.add(msg);
                                 }
                                 else{

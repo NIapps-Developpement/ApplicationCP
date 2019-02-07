@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Integer> wlist;
+    ArrayList<String> wlist;
     String[] listItems;
     boolean[] checkedItems;
     ArrayList<Integer> mUserItems = new ArrayList<>();
@@ -86,26 +86,39 @@ public class MainActivity extends AppCompatActivity {
                                         mUserItems.remove((Integer.valueOf(position)));
                                     }
                                 }
-                    });
+                            });
                             mBuilder.setCancelable(false);
                             mBuilder.setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int which) {
                                     String item = "";
                                     for (int i = 0; i < mUserItems.size(); i++) {
-                                        item = item + listItems[mUserItems.get(i)];
+                                        //  System.out.println(listItems[mUserItems.get(i)]);
                                         if (i != mUserItems.size() - 1) {
                                             item = item + ", ";
                                         }
                                     }
-
+                                    SaveData(mUserItems);
+                                    android.app.FragmentManager fragmentManager = getFragmentManager();
+                                    fragmentManager.beginTransaction()
+                                            .replace(R.id.content_frame
+                                                    , new NewsFragment())
+                                            .commit();
                                 }
                             });
 
                             mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
+
                                     dialogInterface.dismiss();
+                                    ArrayList<String> testlist = LoadData();
+                                    System.out.println(testlist);
+                                    android.app.FragmentManager fragmentManager = getFragmentManager();
+                                    fragmentManager.beginTransaction()
+                                            .replace(R.id.content_frame
+                                                    , new NewsFragment())
+                                            .commit();
                                 }
                             });
 
@@ -115,7 +128,12 @@ public class MainActivity extends AppCompatActivity {
                                     for (int i = 0; i < checkedItems.length; i++) {
                                         checkedItems[i] = false;
                                         mUserItems.clear();
-
+                                        SaveData(mUserItems);
+                                        android.app.FragmentManager fragmentManager = getFragmentManager();
+                                        fragmentManager.beginTransaction()
+                                                .replace(R.id.content_frame
+                                                        , new NewsFragment())
+                                                .commit();
                                     }
                                 }
                             });
@@ -133,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.navigation_dashboard:
 
-                    parambutton.setBackground(getResources().getDrawable(R.color.gey_solid_dark));
+                    parambutton.setBackgroundResource(0);
                     button.setBackground(getResources().getDrawable(R.drawable.ic_note_add));
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -150,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 case R.id.navigation_notifications:
-
+                    parambutton.setBackgroundResource(0);
                     button.setBackgroundResource(0);
                     fragmentManager.beginTransaction()
                             .replace(R.id.content_frame
@@ -158,73 +176,6 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                     return true;
 
-                default:
-                    button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            final Intent mainIntent = new Intent(MainActivity.this, Login.class);
-                            MainActivity.this.startActivity(mainIntent);
-                        }
-                    });
-                    parambutton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-                            mBuilder.setTitle(R.string.dialog_title);
-                            mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
-//                        if (isChecked) {
-//                            if (!mUserItems.contains(position)) {
-//                                mUserItems.add(position);
-//                            }
-//                        } else if (mUserItems.contains(position)) {
-//                            mUserItems.remove(position);
-//                        }
-                                    if(isChecked){
-                                        mUserItems.add(position);
-                                    }else{
-                                        mUserItems.remove((Integer.valueOf(position)));
-                                    }
-                                }
-                            });
-                            mBuilder.setCancelable(false);
-                            mBuilder.setPositiveButton(R.string.ok_label, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int which) {
-                                    String item = "";
-                                    for (int i = 0; i < mUserItems.size(); i++) {
-                                        item = item + listItems[mUserItems.get(i)];
-                                        if (i != mUserItems.size() - 1) {
-                                            item = item + ", ";
-                                        }
-                                    }
-
-                                }
-                            });
-
-                            mBuilder.setNegativeButton(R.string.dismiss_label, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                }
-                            });
-
-                            mBuilder.setNeutralButton(R.string.clear_all_label, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int which) {
-                                    for (int i = 0; i < checkedItems.length; i++) {
-                                        checkedItems[i] = false;
-                                        mUserItems.clear();
-
-                                    }
-                                }
-                            });
-
-                            AlertDialog mDialog = mBuilder.create();
-                            mDialog.show();
-                        }
-                    });
             }
             return false;
         }
@@ -291,6 +242,11 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                         SaveData(mUserItems);
+                        android.app.FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content_frame
+                                        , new NewsFragment())
+                                .commit();
                     }
                 });
 
@@ -299,7 +255,13 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         dialogInterface.dismiss();
-                        LoadData();
+                        ArrayList<String> testlist = LoadData();
+                        System.out.println(testlist);
+                        android.app.FragmentManager fragmentManager = getFragmentManager();
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.content_frame
+                                        , new NewsFragment())
+                                .commit();
                     }
                 });
 
@@ -310,7 +272,11 @@ public class MainActivity extends AppCompatActivity {
                             checkedItems[i] = false;
                             mUserItems.clear();
                             SaveData(mUserItems);
-
+                            android.app.FragmentManager fragmentManager = getFragmentManager();
+                            fragmentManager.beginTransaction()
+                                    .replace(R.id.content_frame
+                                            , new NewsFragment())
+                                    .commit();
                         }
                     }
                 });
@@ -327,17 +293,16 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("PARAMDELEGLIST", json);
         editor.apply();
     }
-    public ArrayList<Integer> LoadData(){
+    public ArrayList<String> LoadData(){
         SharedPreferences sharedPreferences = getSharedPreferences("PARAMDELEG", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("PARAMDELEGLIST", null);
-        Type type = new TypeToken<ArrayList<Integer>>() {}.getType();
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
         wlist = gson.fromJson(json, type);
 
         if (wlist == null){
             wlist = new ArrayList<>();
         }
-        System.out.println(wlist);
         return wlist;
 
     }
